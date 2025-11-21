@@ -11,9 +11,14 @@ void main() {
     expect(find.text('Weather'), findsOneWidget);
 
     // Verify loading or error state is shown initially
-    // Either loading indicator or error icon should be present
-    final hasLoading = find.byType(CircularProgressIndicator).evaluate().isNotEmpty;
-    final hasError = find.byIcon(Icons.error_outline).evaluate().isNotEmpty;
-    expect(hasLoading || hasError, isTrue);
+    // Check that either a loading indicator or error icon is present
+    final loadingFinder = find.byType(CircularProgressIndicator);
+    final errorFinder = find.byIcon(Icons.error_outline);
+    
+    expect(
+      loadingFinder.evaluate().isNotEmpty || errorFinder.evaluate().isNotEmpty,
+      isTrue,
+      reason: 'Expected either loading indicator or error icon to be present',
+    );
   });
 }
