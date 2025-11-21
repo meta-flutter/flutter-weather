@@ -16,9 +16,6 @@ dependencies:
   # D-Bus client for GeoClue2
   dbus: ^0.7.10
   
-  # State management
-  provider: ^6.1.1
-  
   # UI enhancements
   intl: ^0.18.1
   google_fonts: ^6.1.0

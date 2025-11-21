@@ -24,7 +24,9 @@ class WeatherData {
     return WeatherData(
       temperature: (currentWeather['temperature'] as num).toDouble(),
       windSpeed: (currentWeather['windspeed'] as num).toDouble(),
-      precipitation: 0.0, // Current weather doesn't include precipitation
+      // Note: Open-Meteo's current_weather endpoint doesn't include precipitation
+      // For precipitation data, use the hourly or daily forecast endpoints
+      precipitation: 0.0,
       weatherCode: currentWeather['weathercode'] as int,
       time: DateTime.parse(currentWeather['time'] as String),
       latitude: (json['latitude'] as num).toDouble(),

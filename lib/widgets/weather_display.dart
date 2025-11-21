@@ -150,6 +150,7 @@ class WeatherDisplay extends StatelessWidget {
 
   LinearGradient _getWeatherGradient(int weatherCode) {
     // Return different gradients based on weather conditions
+    // WMO Weather interpretation codes: https://open-meteo.com/en/docs
     if (weatherCode == 0) {
       // Clear sky - sunny gradient
       return const LinearGradient(
@@ -160,18 +161,19 @@ class WeatherDisplay extends StatelessWidget {
           Color(0xFF50C9E9),
         ],
       );
-    } else if (weatherCode >= 61 && weatherCode <= 82) {
-      // Rain - rainy gradient
+    } else if (weatherCode >= 95) {
+      // Thunderstorm - stormy gradient (check first to avoid overlap)
       return const LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
+          Color(0xFF2C3E50),
           Color(0xFF4A5F7F),
-          Color(0xFF5B7C99),
         ],
       );
-    } else if (weatherCode >= 71 && weatherCode <= 86) {
-      // Snow - snowy gradient
+    } else if ((weatherCode >= 71 && weatherCode <= 77) || 
+               (weatherCode >= 85 && weatherCode <= 86)) {
+      // Snow and snow showers - snowy gradient
       return const LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
@@ -180,14 +182,15 @@ class WeatherDisplay extends StatelessWidget {
           Color(0xFFB8C9DA),
         ],
       );
-    } else if (weatherCode >= 95) {
-      // Thunderstorm - stormy gradient
+    } else if ((weatherCode >= 51 && weatherCode <= 65) || 
+               (weatherCode >= 80 && weatherCode <= 82)) {
+      // Rain, drizzle, and rain showers - rainy gradient
       return const LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
-          Color(0xFF2C3E50),
           Color(0xFF4A5F7F),
+          Color(0xFF5B7C99),
         ],
       );
     } else {
