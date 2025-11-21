@@ -13,7 +13,6 @@ class WeatherDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final timeFormat = DateFormat('EEEE, MMM d • h:mm a');
     
     return Container(
@@ -24,7 +23,7 @@ class WeatherDisplay extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.15),
+            color: Colors.black.withValues(alpha: 0.15),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -67,7 +66,7 @@ class WeatherDisplay extends StatelessWidget {
           Container(
             height: 1,
             width: double.infinity,
-            color: Colors.white.withOpacity(0.3),
+            color: Colors.white.withValues(alpha: 0.3),
           ),
           const SizedBox(height: 24),
           
@@ -94,7 +93,7 @@ class WeatherDisplay extends StatelessWidget {
             'Last updated: ${timeFormat.format(weather.time)}',
             style: TextStyle(
               fontSize: 14,
-              color: Colors.white.withOpacity(0.8),
+              color: Colors.white.withValues(alpha: 0.8),
               fontWeight: FontWeight.w300,
             ),
           ),
@@ -105,7 +104,7 @@ class WeatherDisplay extends StatelessWidget {
             'Location: ${weather.latitude.toStringAsFixed(2)}°, ${weather.longitude.toStringAsFixed(2)}°',
             style: TextStyle(
               fontSize: 12,
-              color: Colors.white.withOpacity(0.7),
+              color: Colors.white.withValues(alpha: 0.7),
               fontWeight: FontWeight.w300,
             ),
           ),
@@ -131,7 +130,7 @@ class WeatherDisplay extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 12,
-            color: Colors.white.withOpacity(0.8),
+            color: Colors.white.withValues(alpha: 0.8),
             fontWeight: FontWeight.w300,
           ),
         ),
@@ -298,7 +297,7 @@ class WeatherErrorWidget extends StatelessWidget {
             error,
             style: TextStyle(
               fontSize: 14,
-              color: Colors.white.withOpacity(0.8),
+              color: Colors.white.withValues(alpha: 0.8),
             ),
             textAlign: TextAlign.center,
           ),

@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                       'Data from Open-Meteo API',
                       style: TextStyle(
                         fontSize: 12,
-                        color: Colors.white.withOpacity(0.6),
+                        color: Colors.white.withValues(alpha: 0.6),
                       ),
                     ),
                   ),

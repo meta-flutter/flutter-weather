@@ -44,14 +44,14 @@ class GeoClueService {
       await _client!.setProperty(
         'org.freedesktop.GeoClue2.Client',
         'DesktopId',
-        DBusString('flutter_weather'),
+        const DBusString('flutter_weather'),
       );
 
       // Set requested accuracy level (exact location)
       await _client!.setProperty(
         'org.freedesktop.GeoClue2.Client',
         'RequestedAccuracyLevel',
-        DBusUint32(8), // EXACT accuracy
+        const DBusUint32(8), // EXACT accuracy
       );
 
       _isInitialized = true;
