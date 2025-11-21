@@ -119,8 +119,7 @@ class GeoClueService {
         accuracy: (accuracy.value as DBusDouble).value,
       );
     } catch (e) {
-      // Fallback to a default location if GeoClue2 fails
-      // (useful for testing or when permission is denied)
+      // Re-throw the exception - fallback is handled at the caller level
       throw Exception('Failed to get location: $e');
     }
   }
