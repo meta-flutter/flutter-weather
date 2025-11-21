@@ -82,14 +82,14 @@ class GeoClueService {
         signature: DBusSignature('o'),
       );
 
-      if (locationPath.value == DBusObjectPath('/')) {
+      if (locationPath == DBusObjectPath('/')) {
         throw Exception('No location available');
       }
 
       _location = DBusRemoteObject(
         _systemBus!,
         name: 'org.freedesktop.GeoClue2',
-        path: locationPath.value as DBusObjectPath,
+        path: locationPath as DBusObjectPath,
       );
 
       // Get latitude
@@ -114,9 +114,9 @@ class GeoClueService {
       );
 
       return LocationData(
-        latitude: (latitude.value as DBusDouble).value,
-        longitude: (longitude.value as DBusDouble).value,
-        accuracy: (accuracy.value as DBusDouble).value,
+        latitude: (latitude as DBusDouble).value,
+        longitude: (longitude as DBusDouble).value,
+        accuracy: (accuracy as DBusDouble).value,
       );
     } catch (e) {
       // Re-throw the exception - fallback is handled at the caller level
